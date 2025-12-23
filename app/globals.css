@@ -1,26 +1,196 @@
 @import "tailwindcss";
 
+/* Custom Properties - Design System */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors - Dark Green, Gold, White Palette */
+  --color-forest: #1a3a2e;
+  --color-sage: #3d5a4b;
+  --color-moss: #5a7765;
+  --color-gold: #d4af37;
+  --color-gold-dark: #b8941f;
+  --color-gold-light: #f0d98e;
+  --color-white: #ffffff;
+  --color-cream: #fafaf7;
+  --color-charcoal: #2a2a2a;
+
+  /* Typography - Will be configured with Google Fonts */
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-inter);
+
+  /* Spacing Scale - Generous whitespace */
+  --spacing-xs: 1rem;
+  --spacing-sm: 2rem;
+  --spacing-md: 4rem;
+  --spacing-lg: 6rem;
+  --spacing-xl: 10rem;
+
+  /* Layout */
+  --container-max: 1440px;
+  --container-narrow: 960px;
+  --container-wide: 1920px;
+
+  /* Animation */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Color System */
+  --color-forest: var(--color-forest);
+  --color-sage: var(--color-sage);
+  --color-moss: var(--color-moss);
+  --color-gold: var(--color-gold);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-gold-light: var(--color-gold-light);
+  --color-white: var(--color-white);
+  --color-cream: var(--color-cream);
+  --color-charcoal: var(--color-charcoal);
+
+  /* Font Families */
+  --font-family-display: var(--font-display);
+  --font-family-sans: var(--font-sans);
+
+  /* Font Sizes - Minimal, bold scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 3rem;
+  --font-size-4xl: 4rem;
+  --font-size-5xl: 6rem;
+
+  /* Letter Spacing - Wide tracking for bold aesthetic */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.1em;
+  --letter-spacing-widest: 0.2em;
+
+  /* Line Heights - Short lines */
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Container widths */
+  --max-width-narrow: 960px;
+  --max-width-base: 1440px;
+  --max-width-wide: 1920px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: var(--color-white);
+  color: var(--color-charcoal);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Headings - Short, bold, generous spacing */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+p {
+  max-width: 70ch;
+  line-height: var(--line-height-normal);
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-gold);
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-forest);
+}
+
+::-moz-selection {
+  background: var(--color-gold);
+  color: var(--color-forest);
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+/* Image styles */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Custom Utility Classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+.container-padding {
+  padding-left: clamp(1rem, 5vw, 3rem);
+  padding-right: clamp(1rem, 5vw, 3rem);
+}
+
+/* Section spacing */
+.section-spacing {
+  padding-top: clamp(4rem, 8vw, 10rem);
+  padding-bottom: clamp(4rem, 8vw, 10rem);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
 }
