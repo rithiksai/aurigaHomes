@@ -27,9 +27,12 @@ const featuredProjects = [
 
 export function FeaturedProjects() {
   return (
-    <Section className="bg-cream">
+    <Section>
       <Container>
-        <Heading variant="h2" className="text-center mb-16">
+        <Heading
+          variant="h2"
+          className="text-center mb-16 text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
+        >
           Featured Projects
         </Heading>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -39,7 +42,7 @@ export function FeaturedProjects() {
               href={`/designs/${project.id}`}
               className="group"
             >
-              <div className="relative aspect-[4/3] overflow-hidden mb-4">
+              <div className="relative aspect-[4/3] overflow-hidden mb-4 rounded-lg shadow-xl">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -52,10 +55,10 @@ export function FeaturedProjects() {
                   </span>
                 </div>
               </div>
-              <h3 className="text-xl font-display tracking-wide mb-2 group-hover:text-gold transition-colors">
+              <h3 className="text-xl font-display tracking-wide mb-2 text-white group-hover:text-gold transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                 {project.title}
               </h3>
-              <p className="text-charcoal/70 text-sm uppercase tracking-wider">
+              <p className="text-white/80 text-sm uppercase tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
                 {project.location}
               </p>
             </Link>

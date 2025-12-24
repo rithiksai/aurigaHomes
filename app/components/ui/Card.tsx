@@ -3,13 +3,17 @@ import { cn } from "@/lib/utils/cn";
 interface CardProps {
   children: React.ReactNode;
   className?: string;
+  variant?: "light" | "dark";
 }
 
-export function Card({ children, className }: CardProps) {
+export function Card({ children, className, variant = "light" }: CardProps) {
   return (
     <div
       className={cn(
-        "bg-cream border border-sage/10 transition-all duration-300 hover:border-gold/50",
+        "border transition-all duration-300 hover:border-gold/50",
+        variant === "dark"
+          ? "bg-black/40 border-gold/20 backdrop-blur-sm"
+          : "bg-cream border-sage/10",
         className
       )}
     >

@@ -3,6 +3,7 @@ import { Container } from "../components/ui/Container";
 import { Section } from "../components/ui/Section";
 import { Heading } from "../components/ui/Heading";
 import { ProjectGrid } from "../components/projects/ProjectGrid";
+import { LeatherBackground } from "../components/ui/LeatherBackground";
 import { projects } from "../lib/data/projects";
 
 export const metadata: Metadata = {
@@ -11,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function DesignsPage() {
   return (
-    <>
+    <LeatherBackground className="min-h-screen">
       {/* Hero Section */}
-      <Section className="min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-cream to-white">
+      <Section className="min-h-[60vh] flex items-center justify-center">
         <Container>
           <div className="text-center">
             <Heading variant="hero" className="mb-6">
@@ -32,6 +33,6 @@ export default function DesignsPage() {
           <ProjectGrid projects={projects} />
         </Container>
       </Section>
-    </>
+    </LeatherBackground>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "../ui/Button";
+import { submitContactForm } from "@/lib/api/strapi";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -11,25 +12,24 @@ export function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate form submission
-    console.log("Form submitted:", formData);
-
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const result = await submitContactForm(formData);
 
     setIsSubmitting(false);
-    setSubmitted(true);
 
-    // Reset form after submission
-    setFormData({ name: "", email: "", message: "" });
-
-    // Reset submitted state after 3 seconds
-    setTimeout(() => setSubmitted(false), 3000);
+    if (result.success) {
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setSubmitted(false), 5000);
+    } else {
+      setError(result.error || "Something went wrong. Please try again.");
+    }
   };
 
   const handleChange = (
@@ -109,6 +109,12 @@ export function ContactForm() {
       {submitted && (
         <p className="text-gold text-sm">
           Thank you for your message! We'll get back to you soon.
+        </p>
+      )}
+
+      {error && (
+        <p className="text-red-500 text-sm">
+          {error}
         </p>
       )}
     </form>

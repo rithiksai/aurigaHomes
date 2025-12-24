@@ -4,6 +4,7 @@ import { Section } from "../components/ui/Section";
 import { Heading } from "../components/ui/Heading";
 import { ServiceGrid } from "../components/capabilities/ServiceGrid";
 import { Button } from "../components/ui/Button";
+import { LeatherBackground } from "../components/ui/LeatherBackground";
 import { services } from "../lib/data/services";
 
 export const metadata: Metadata = {
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
 
 export default function WhatWeDoPage() {
   return (
-    <>
+    <LeatherBackground className="min-h-screen">
       {/* Hero Section */}
-      <Section className="min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-cream to-white">
+      <Section className="min-h-[60vh] flex items-center justify-center">
         <Container>
           <div className="text-center">
             <Heading variant="hero" className="mb-6">
@@ -50,6 +51,6 @@ export default function WhatWeDoPage() {
           </div>
         </Container>
       </Section>
-    </>
+    </LeatherBackground>
   );
 }

@@ -4,6 +4,7 @@ import { Section } from "../components/ui/Section";
 import { Heading } from "../components/ui/Heading";
 import { ContactForm } from "../components/contact/ContactForm";
 import { ContactInfo } from "../components/contact/ContactInfo";
+import { LeatherBackground } from "../components/ui/LeatherBackground";
 
 export const metadata: Metadata = {
   title: "Get in Touch",
@@ -11,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <>
+    <LeatherBackground className="min-h-screen">
       {/* Hero Section */}
-      <Section className="min-h-[50vh] flex items-center justify-center bg-gradient-to-br from-cream to-white">
+      <Section className="min-h-[50vh] flex items-center justify-center">
         <Container>
           <div className="text-center">
             <Heading variant="hero" className="mb-6">
@@ -50,19 +51,19 @@ export default function ContactPage() {
       </Section>
 
       {/* CTA Section */}
-      <Section className="bg-cream">
+      <Section className="bg-forest">
         <Container>
           <div className="text-center max-w-3xl mx-auto">
-            <Heading variant="h2" className="mb-6">
+            <Heading variant="h2" className="mb-6 text-cream">
               Start Your Journey
             </Heading>
-            <p className="text-lg text-charcoal/80">
+            <p className="text-lg text-cream/80">
               Whether you're planning a new build, renovation, or simply exploring ideas,
               we'd love to hear from you. Every great project starts with a conversation.
             </p>
           </div>
         </Container>
       </Section>
-    </>
+    </LeatherBackground>
   );
 }

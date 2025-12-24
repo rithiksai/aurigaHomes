@@ -5,6 +5,7 @@ import { Heading } from "../components/ui/Heading";
 import { Button } from "../components/ui/Button";
 import { FoundersSection } from "../components/about/FoundersSection";
 import { ValuesSection } from "../components/about/ValuesSection";
+import { LeatherBackground } from "../components/ui/LeatherBackground";
 import { teamMembers, values } from "../lib/data/team";
 
 export const metadata: Metadata = {
@@ -13,9 +14,9 @@ export const metadata: Metadata = {
 
 export default function OurStoryPage() {
   return (
-    <>
+    <LeatherBackground className="min-h-screen">
       {/* Hero Section */}
-      <Section className="min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-cream to-white">
+      <Section className="min-h-[60vh] flex items-center justify-center">
         <Container>
           <div className="text-center">
             <Heading variant="hero" className="mb-6">
@@ -30,14 +31,14 @@ export default function OurStoryPage() {
 
       {/* Introduction */}
       <Section>
-        <Container size="narrow">
-          <div className="text-center">
-            <Heading variant="h2" className="mb-8">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto">
+            <Heading variant="h2" className="mb-12">
               Building the Future, Honoring the Past
             </Heading>
             <div className="space-y-6 text-lg text-charcoal/80 leading-relaxed">
               <p>
-                Founded in 2010, Auriga Homes emerged from a simple belief: that
+                Founded in 2024, Auriga Homes emerged from a simple belief: that
                 architecture should be both minimal and bold, timeless yet
                 contemporary.
               </p>
@@ -55,9 +56,9 @@ export default function OurStoryPage() {
       </Section>
 
       {/* Founders */}
-      <Section className="bg-cream">
+      <Section>
         <Container>
-          <Heading variant="h2" className="text-center mb-16">
+          <Heading variant="h2" className="text-center mb-20">
             Meet the Founders
           </Heading>
           <FoundersSection founders={teamMembers} />
@@ -67,7 +68,7 @@ export default function OurStoryPage() {
       {/* Values */}
       <Section>
         <Container>
-          <Heading variant="h2" className="text-center mb-16">
+          <Heading variant="h2" className="text-center mb-20">
             Our Values
           </Heading>
           <ValuesSection values={values} />
@@ -90,6 +91,6 @@ export default function OurStoryPage() {
           </div>
         </Container>
       </Section>
-    </>
+    </LeatherBackground>
   );
 }

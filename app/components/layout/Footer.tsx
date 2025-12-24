@@ -17,12 +17,12 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer className="bg-forest text-cream h-60 flex items-center">
-      <div className="w-full px-16 md:px-24 lg:px-32">
+      <div className="w-full px-12 md:px-20">
         <div className="w-full">
           {/* Main Footer Content */}
           <div className="flex justify-between items-center w-full">
             {/* Brand */}
-            <div className="flex items-center gap-4 ml-8 md:ml-16">
+            <div className="flex items-center gap-4">
               <Image
                 src="/white_green_trans.svg"
                 alt="Auriga Homes"
@@ -76,7 +76,7 @@ export function Footer() {
             </div>
 
             {/* Copyright */}
-            <div className="text-right mr-8 md:mr-16">
+            <div className="text-right">
               <p className="text-cream/60 text-xs mb-2">
                 &copy; {new Date().getFullYear()} Auriga Homes
               </p>
