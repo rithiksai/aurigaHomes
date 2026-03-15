@@ -1,96 +1,322 @@
 import type { Metadata } from "next";
-import { Container } from "../components/ui/Container";
-import { Section } from "../components/ui/Section";
-import { Heading } from "../components/ui/Heading";
-import { Button } from "../components/ui/Button";
-import { FoundersSection } from "../components/about/FoundersSection";
-import { ValuesSection } from "../components/about/ValuesSection";
-import { LeatherBackground } from "../components/ui/LeatherBackground";
-import { teamMembers, values } from "../lib/data/team";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Our Story",
 };
 
+const founders = [
+  {
+    name: "Manoj Cherukuri",
+    role: "Founder & Lead Builder",
+    quote: "Architecture is the art of making the inevitable feel effortless.",
+    bio: "With over 5 years of hands-on construction experience, Manoj founded Auriga Homes on a single conviction: that the homes people live in should be as carefully considered as the lives they live inside them. His minimalist philosophy runs through every project — not as a style, but as a discipline.",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1000&q=90&auto=format&fit=crop",
+  },
+  {
+    name: "Raunak Baid",
+    role: "Co-Founder & Interior Designer",
+    quote: "Every space should feel like it was made for exactly one person — its owner.",
+    bio: "Raunak's eye for detail and deep passion for sustainable design have shaped Auriga's interior language from the very beginning. He believes every room should tell a story — and his job is to make sure it's the right one. His interiors feel personal, never generic.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=1000&q=90&auto=format&fit=crop",
+  },
+];
+
+const values = [
+  {
+    number: "01",
+    title: "Minimal Aesthetic",
+    description: "We believe less is more. Every element earns its place — nothing is decorative for its own sake.",
+  },
+  {
+    number: "02",
+    title: "Bold Vision",
+    description: "We push boundaries while honoring timeless principles. Great design is both daring and disciplined.",
+  },
+  {
+    number: "03",
+    title: "Craftsmanship",
+    description: "Quality is non-negotiable. We work only with the finest materials and the most skilled artisans.",
+  },
+];
+
 export default function OurStoryPage() {
   return (
-    <LeatherBackground className="min-h-screen">
-      {/* Hero Section */}
-      <Section className="min-h-[60vh] flex items-center justify-center">
-        <Container>
-          <div className="text-center">
-            <Heading variant="hero" className="mb-6">
-              Our Story
-            </Heading>
-            <p className="text-xl text-charcoal/70 max-w-2xl mx-auto">
-              A journey of passion, dedication, and timeless design
-            </p>
-          </div>
-        </Container>
-      </Section>
+    <div style={{ minHeight: "100vh", background: "#F7F4EF" }}>
 
-      {/* Introduction */}
-      <Section>
-        <Container>
-          <div className="text-center max-w-3xl mx-auto">
-            <Heading variant="h2" className="mb-12">
-              Building the Future, Honoring the Past
-            </Heading>
-            <div className="space-y-6 text-lg text-charcoal/80 leading-relaxed">
-              <p>
-                Founded in 2024, Auriga Homes emerged from a simple belief: that
-                architecture should be both minimal and bold, timeless yet
-                contemporary.
+      {/* ── HERO ── */}
+      <section style={{ position: "relative", height: "100vh", minHeight: "600px" }}>
+        <Image
+          src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=2000&q=90&auto=format&fit=crop"
+          alt="Auriga Homes — Our Story"
+          fill
+          className="object-cover object-center"
+          priority
+          unoptimized
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(13,12,11,0.3) 0%, rgba(13,12,11,0.7) 100%)" }} />
+
+        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 32px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
+            <div style={{ width: "32px", height: "1px", background: "#B8965A" }} />
+            <span style={{ fontSize: "10px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#B8965A" }}>Our Story</span>
+            <div style={{ width: "32px", height: "1px", background: "#B8965A" }} />
+          </div>
+          <h1
+            className="font-display font-light"
+            style={{ fontSize: "clamp(56px, 8vw, 120px)", lineHeight: 1.0, color: "white", letterSpacing: "-0.01em" }}
+          >
+            Who<br />
+            <em style={{ color: "#B8965A", fontStyle: "italic" }}>We Are</em>
+          </h1>
+          <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", marginTop: "28px", maxWidth: "460px", lineHeight: 1.8, fontWeight: 300 }}>
+            A small team with a singular obsession — creating homes that are worth living in.
+          </p>
+        </div>
+
+        <div style={{ position: "absolute", bottom: "40px", left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+          <span style={{ fontSize: "9px", letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Scroll</span>
+          <div style={{ width: "1px", height: "48px", background: "linear-gradient(to bottom, rgba(184,150,90,0.8), transparent)" }} />
+        </div>
+      </section>
+
+      {/* ── ORIGIN STORY ── */}
+      <section style={{ background: "#F7F4EF", padding: "120px 0", borderBottom: "1px solid rgba(184,150,90,0.2)" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 clamp(32px, 6vw, 96px)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "96px", alignItems: "center" }}>
+
+          {/* Left: Text */}
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
+              <div style={{ width: "32px", height: "1px", background: "#B8965A" }} />
+              <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8965A" }}>Est. 2024</span>
+            </div>
+            <h2
+              className="font-display font-light"
+              style={{ fontSize: "clamp(36px, 4vw, 60px)", lineHeight: 1.1, color: "#161412", marginBottom: "32px" }}
+            >
+              Built on a belief,<br />
+              not a <em style={{ fontStyle: "italic", color: "#B8965A" }}>blueprint</em>
+            </h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              <p style={{ fontSize: "15px", fontWeight: 300, lineHeight: 1.9, color: "#4A443C" }}>
+                Auriga Homes was founded in 2024 on a simple but demanding belief — that architecture should be both minimal and bold, timeless yet thoroughly contemporary.
               </p>
-              <p>
-                We've had the privilege of working with remarkable clients who
-                share our vision for creating spaces that inspire and endure.
+              <p style={{ fontSize: "15px", fontWeight: 300, lineHeight: 1.9, color: "#4A443C" }}>
+                We started small, on purpose. A tightly focused team means every project gets the full weight of our attention. There are no junior handoffs, no template solutions — just two founders and a shared obsession with getting it right.
               </p>
-              <p>
-                Every project is a collaboration, a chance to push boundaries
-                while honoring the principles of great design.
+              <p style={{ fontSize: "15px", fontWeight: 300, lineHeight: 1.9, color: "#4A443C" }}>
+                Every project we take on is a collaboration — a chance to push what&apos;s possible while staying deeply true to the vision of the person who will call it home.
               </p>
             </div>
           </div>
-        </Container>
-      </Section>
 
-      {/* Founders */}
-      <Section>
-        <Container>
-          <Heading variant="h2" className="text-center mb-20">
-            Meet the Founders
-          </Heading>
-          <FoundersSection founders={teamMembers} />
-        </Container>
-      </Section>
-
-      {/* Values */}
-      <Section>
-        <Container>
-          <Heading variant="h2" className="text-center mb-20">
-            Our Values
-          </Heading>
-          <ValuesSection values={values} />
-        </Container>
-      </Section>
-
-      {/* CTA Section */}
-      <Section className="bg-forest">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto">
-            <Heading variant="h2" className="text-cream mb-6">
-              Let's Create Your Story
-            </Heading>
-            <p className="text-cream/80 text-lg mb-8">
-              We'd love to hear about your vision and explore how we can bring it to life.
-            </p>
-            <Button href="/contact" variant="primary">
-              Start a Conversation
-            </Button>
+          {/* Right: Image with accent */}
+          <div style={{ position: "relative" }}>
+            <div style={{ position: "relative", aspectRatio: "4/5", overflow: "hidden", border: "1px solid rgba(184,150,90,0.3)" }}>
+              <Image
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=90&auto=format&fit=crop"
+                alt="Auriga Homes — Our work"
+                fill
+                className="object-cover"
+                unoptimized
+              />
+            </div>
+            {/* Gold accent block */}
+            <div style={{
+              position: "absolute",
+              bottom: "-24px",
+              right: "-24px",
+              background: "#B8965A",
+              padding: "28px 32px",
+              zIndex: 10,
+            }}>
+              <div
+                className="font-display font-light"
+                style={{ fontSize: "48px", color: "white", lineHeight: 1 }}
+              >
+                2024
+              </div>
+              <div style={{ fontSize: "9px", letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginTop: "4px" }}>
+                Founded
+              </div>
+            </div>
           </div>
-        </Container>
-      </Section>
-    </LeatherBackground>
+
+        </div>
+      </section>
+
+      {/* ── FOUNDERS ── */}
+      <section style={{ background: "#F7F4EF" }}>
+        {/* Section header */}
+        <div style={{ padding: "80px clamp(32px, 6vw, 96px) 0", maxWidth: "1280px", margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <div style={{ width: "32px", height: "1px", background: "#B8965A" }} />
+            <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8965A" }}>The People</span>
+          </div>
+          <h2
+            className="font-display font-light"
+            style={{ fontSize: "clamp(40px, 5vw, 72px)", lineHeight: 1.05, color: "#161412" }}
+          >
+            Meet the <em style={{ fontStyle: "italic", color: "#B8965A" }}>Founders</em>
+          </h2>
+        </div>
+
+        {founders.map((founder, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <div key={founder.name} style={{ borderTop: "1px solid rgba(184,150,90,0.2)", marginTop: index === 0 ? "48px" : "0" }}>
+              <div
+                className="flex flex-col md:flex-row"
+                style={{ minHeight: "560px" }}
+              >
+                {/* Image */}
+                <div
+                  className={`relative w-full md:w-1/2 ${isEven ? "md:order-1" : "md:order-2"}`}
+                  style={{ minHeight: "400px" }}
+                >
+                  <Image
+                    src={founder.image}
+                    alt={founder.name}
+                    fill
+                    className="object-cover object-top"
+                    unoptimized
+                    style={{ filter: "grayscale(20%)" }}
+                  />
+                </div>
+
+                {/* Text */}
+                <div
+                  className={`w-full md:w-1/2 flex flex-col justify-center ${isEven ? "md:order-2" : "md:order-1"}`}
+                  style={{ padding: "72px clamp(40px, 6vw, 96px)", background: isEven ? "#F7F4EF" : "#FFFFFF" }}
+                >
+                  <div style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8965A", marginBottom: "16px" }}>
+                    {founder.role}
+                  </div>
+                  <h3
+                    className="font-display font-light"
+                    style={{ fontSize: "clamp(32px, 3vw, 48px)", lineHeight: 1.1, color: "#161412", marginBottom: "20px" }}
+                  >
+                    {founder.name}
+                  </h3>
+                  <div style={{ width: "40px", height: "1px", background: "#B8965A", marginBottom: "24px" }} />
+                  <p
+                    className="font-display font-light italic"
+                    style={{ fontSize: "20px", color: "#4A443C", lineHeight: 1.5, marginBottom: "24px" }}
+                  >
+                    &ldquo;{founder.quote}&rdquo;
+                  </p>
+                  <p style={{ fontSize: "14px", fontWeight: 300, lineHeight: 1.9, color: "#4A443C", maxWidth: "440px" }}>
+                    {founder.bio}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      {/* ── VALUES ── */}
+      <section style={{ background: "#161412", padding: "120px clamp(32px, 6vw, 96px)" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          {/* Header */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "72px", paddingBottom: "32px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+                <div style={{ width: "32px", height: "1px", background: "#B8965A" }} />
+                <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8965A" }}>What We Stand For</span>
+              </div>
+              <h2
+                className="font-display font-light"
+                style={{ fontSize: "clamp(40px, 5vw, 68px)", lineHeight: 1.05, color: "white" }}
+              >
+                Our <em style={{ fontStyle: "italic", color: "#B8965A" }}>Values</em>
+              </h2>
+            </div>
+          </div>
+
+          {/* Values grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0" }}>
+            {values.map((value, index) => (
+              <div
+                key={value.number}
+                style={{
+                  padding: "48px 40px",
+                  borderRight: index < values.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
+                }}
+              >
+                <div
+                  className="font-display font-light"
+                  style={{ fontSize: "72px", lineHeight: 1, color: "rgba(184,150,90,0.2)", marginBottom: "24px" }}
+                >
+                  {value.number}
+                </div>
+                <h3
+                  className="font-display font-light"
+                  style={{ fontSize: "26px", color: "white", marginBottom: "16px", lineHeight: 1.2 }}
+                >
+                  {value.title}
+                </h3>
+                <div style={{ width: "32px", height: "1px", background: "#B8965A", marginBottom: "16px" }} />
+                <p style={{ fontSize: "13px", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.5)" }}>
+                  {value.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section style={{ background: "#0D0C0B", padding: "120px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div
+          className="font-display font-light"
+          style={{
+            position: "absolute", top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)",
+            fontSize: "220px", whiteSpace: "nowrap",
+            color: "rgba(255,255,255,0.02)", letterSpacing: "0.1em",
+            pointerEvents: "none", userSelect: "none",
+          }}
+          aria-hidden="true"
+        >
+          AURIGA
+        </div>
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", marginBottom: "32px" }}>
+            <div style={{ width: "32px", height: "1px", background: "#B8965A" }} />
+            <span style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#B8965A" }}>Work With Us</span>
+            <div style={{ width: "32px", height: "1px", background: "#B8965A" }} />
+          </div>
+          <h2
+            className="font-display font-light"
+            style={{ fontSize: "clamp(40px, 5vw, 80px)", color: "white", lineHeight: 1.1, marginBottom: "20px" }}
+          >
+            Let&apos;s create<br />
+            your <em style={{ fontStyle: "italic", color: "#B8965A" }}>story</em>
+          </h2>
+          <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.4)", maxWidth: "440px", margin: "0 auto 48px", lineHeight: 1.8 }}>
+            We&apos;d love to hear about your vision. Every great home begins with a conversation.
+          </p>
+          <Link
+            href="/contact"
+            style={{
+              display: "inline-block",
+              border: "1px solid white",
+              color: "white",
+              padding: "16px 48px",
+              fontSize: "11px",
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+            }}
+            className="hover:bg-white hover:text-[#161412] transition-colors duration-300"
+          >
+            Start a Conversation →
+          </Link>
+        </div>
+      </section>
+
+    </div>
   );
 }

@@ -6,26 +6,29 @@ interface TeamMemberProps {
   variant?: "light" | "dark";
 }
 
-export function TeamMember({ member, variant = "light" }: TeamMemberProps) {
-  const isDark = variant === "dark";
-
+export function TeamMember({ member }: TeamMemberProps) {
   return (
-    <div className="group">
-      <div className="relative aspect-[3/4] mb-6 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 border border-gold/30">
+    <div className="group flex gap-8 items-start">
+      {/* Image */}
+      <div className="relative w-48 h-48 flex-shrink-0 overflow-hidden border border-[rgba(184,150,90,0.3)] grayscale hover:grayscale-0 transition-all duration-500">
         <Image
           src={member.image}
           alt={member.name}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover object-top"
         />
       </div>
-      <h3 className={`text-2xl font-display tracking-wide mb-2 group-hover:text-gold transition-colors ${isDark ? "text-cream" : "text-charcoal"}`}>
-        {member.name}
-      </h3>
-      <p className="text-gold text-sm uppercase tracking-wider mb-4">
-        {member.role}
-      </p>
-      <p className={`leading-relaxed ${isDark ? "text-cream/80" : "text-charcoal/80"}`}>{member.bio}</p>
+      {/* Text */}
+      <div className="flex flex-col">
+        <h3 className="font-display text-2xl font-normal text-[#161412] mb-1 group-hover:text-[#B8965A] transition-colors">
+          {member.name}
+        </h3>
+        <p className="text-[10px] uppercase tracking-widest text-[#B8965A] mb-4">
+          {member.role}
+        </p>
+        <div className="w-8 h-px bg-[#B8965A] mb-4" />
+        <p className="text-sm font-light leading-relaxed text-[#4A443C]">{member.bio}</p>
+      </div>
     </div>
   );
 }

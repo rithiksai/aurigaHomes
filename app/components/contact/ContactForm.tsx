@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "../ui/Button";
 import { submitContactForm } from "@/lib/api/strapi";
 
 export function ContactForm() {
@@ -46,7 +45,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="name"
-          className="block text-sm uppercase tracking-wider text-charcoal/70 mb-2"
+          className="text-[10px] uppercase tracking-widest text-[#4A443C] mb-2 block"
         >
           Name
         </label>
@@ -57,7 +56,7 @@ export function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full border-b border-sage/30 focus:border-gold outline-none py-3 bg-transparent transition-colors"
+          className="border-b border-[rgba(184,150,90,0.3)] focus:border-[#B8965A] bg-transparent py-3 text-[#161412] placeholder:text-[#4A443C]/40 outline-none w-full transition-colors text-sm"
           placeholder="Your name"
         />
       </div>
@@ -65,7 +64,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="email"
-          className="block text-sm uppercase tracking-wider text-charcoal/70 mb-2"
+          className="text-[10px] uppercase tracking-widest text-[#4A443C] mb-2 block"
         >
           Email
         </label>
@@ -76,7 +75,7 @@ export function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full border-b border-sage/30 focus:border-gold outline-none py-3 bg-transparent transition-colors"
+          className="border-b border-[rgba(184,150,90,0.3)] focus:border-[#B8965A] bg-transparent py-3 text-[#161412] placeholder:text-[#4A443C]/40 outline-none w-full transition-colors text-sm"
           placeholder="your@email.com"
         />
       </div>
@@ -84,7 +83,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="block text-sm uppercase tracking-wider text-charcoal/70 mb-2"
+          className="text-[10px] uppercase tracking-widest text-[#4A443C] mb-2 block"
         >
           Message
         </label>
@@ -95,25 +94,29 @@ export function ContactForm() {
           onChange={handleChange}
           required
           rows={5}
-          className="w-full border-b border-sage/30 focus:border-gold outline-none py-3 bg-transparent resize-none transition-colors"
+          className="border-b border-[rgba(184,150,90,0.3)] focus:border-[#B8965A] bg-transparent py-3 text-[#161412] placeholder:text-[#4A443C]/40 outline-none w-full resize-none transition-colors text-sm"
           placeholder="Tell us about your project..."
         />
       </div>
 
       <div>
-        <Button type="submit" disabled={isSubmitting}>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="bg-[#161412] text-white px-8 py-4 text-xs uppercase tracking-widest hover:bg-[#B8965A] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           {isSubmitting ? "Sending..." : submitted ? "Sent!" : "Send Message"}
-        </Button>
+        </button>
       </div>
 
       {submitted && (
-        <p className="text-gold text-sm">
-          Thank you for your message! We'll get back to you soon.
+        <p className="text-[#B8965A] text-sm mt-3">
+          Thank you for your message! We&apos;ll get back to you soon.
         </p>
       )}
 
       {error && (
-        <p className="text-red-500 text-sm">
+        <p className="text-red-500 text-sm mt-3">
           {error}
         </p>
       )}

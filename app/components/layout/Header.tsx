@@ -1,99 +1,203 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { cn } from "@/lib/utils/cn";
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/what-we-do", label: "What We Do" },
   { href: "/designs", label: "Designs" },
-  { href: "/blog", label: "Blog" },
   { href: "/our-story", label: "Our Story" },
-  { href: "/contact", label: "Get in Touch" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-sage/10">
-      <nav className="container-padding py-6">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
-          {/* Logo */}
-          <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Image
-              src="/icon_black.svg"
-              alt="Auriga Homes"
-              width={40}
-              height={40}
-              className="w-10 h-10"
-            />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm uppercase tracking-wider hover:text-gold transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-charcoal hover:text-gold transition-colors"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {mobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={cn(
-            "md:hidden fixed inset-0 top-[73px] bg-forest/95 backdrop-blur-sm transition-all duration-300",
-            mobileMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          )}
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 h-[76px] flex items-center justify-between px-12 transition-shadow duration-300",
+        "border-b"
+      )}
+      style={{
+        background: "rgba(247,244,239,0.96)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderBottomColor: "rgba(184,150,90,0.25)",
+        boxShadow: scrolled ? "0 1px 24px rgba(0,0,0,0.06)" : "none",
+      }}
+    >
+      {/* Logo */}
+      <Link
+        href="/"
+        style={{
+          fontFamily: "var(--font-display), 'Cormorant Garamond', Georgia, serif",
+          fontSize: "22px",
+          fontWeight: 400,
+          letterSpacing: "0.04em",
+          color: "var(--color-ink)",
+          textDecoration: "none",
+        }}
+      >
+        Auriga{" "}
+        <span
+          style={{
+            color: "var(--color-gold)",
+            fontStyle: "italic",
+          }}
         >
-          <ul className="flex flex-col items-center justify-center h-full gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-2xl text-cream uppercase tracking-widest hover:text-gold transition-colors font-display"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
+          Homes
+        </span>
+      </Link>
+
+      {/* Desktop Navigation */}
+      <ul className="hidden md:flex items-center gap-9">
+        {navLinks.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              style={{
+                fontSize: "10.5px",
+                fontWeight: 500,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "var(--color-ink-soft)",
+                textDecoration: "none",
+                transition: "color 0.25s",
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLElement).style.color = "var(--color-gold)";
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLElement).style.color = "var(--color-ink-soft)";
+              }}
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+        <li>
+          <Link
+            href="/contact"
+            style={{
+              fontSize: "10.5px",
+              fontWeight: 500,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "var(--color-white)",
+              background: "var(--color-ink)",
+              padding: "11px 24px",
+              textDecoration: "none",
+              display: "inline-block",
+              transition: "background 0.25s",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "var(--color-gold)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "var(--color-ink)";
+            }}
+          >
+            Get in Touch
+          </Link>
+        </li>
+      </ul>
+
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="md:hidden"
+        style={{ color: "var(--color-ink)", background: "none", border: "none", cursor: "pointer" }}
+        aria-label="Toggle menu"
+      >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          {mobileMenuOpen ? (
+            <path d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          )}
+        </svg>
+      </button>
+
+      {/* Mobile Menu */}
+      <div
+        className="md:hidden fixed inset-0 top-[76px] transition-all duration-300"
+        style={{
+          background: "var(--color-dark)",
+          opacity: mobileMenuOpen ? 1 : 0,
+          pointerEvents: mobileMenuOpen ? "auto" : "none",
+          zIndex: 40,
+        }}
+      >
+        <ul className="flex flex-col items-center justify-center h-full gap-8">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  fontFamily: "var(--font-display), 'Cormorant Garamond', Georgia, serif",
+                  fontSize: "2rem",
+                  color: "var(--color-cream)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.2em",
+                  textDecoration: "none",
+                  transition: "color 0.25s",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.color = "var(--color-gold)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.color = "var(--color-cream)";
+                }}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              style={{
+                fontFamily: "var(--font-display), 'Cormorant Garamond', Georgia, serif",
+                fontSize: "2rem",
+                color: "var(--color-cream)",
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                textDecoration: "none",
+                transition: "color 0.25s",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.color = "var(--color-gold)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.color = "var(--color-cream)";
+              }}
+            >
+              Get in Touch
+            </Link>
+          </li>
+        </ul>
+      </div>
     </header>
   );
 }

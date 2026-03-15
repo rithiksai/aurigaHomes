@@ -1,94 +1,275 @@
+"use client";
+
 import Link from "next/link";
-import Image from "next/image";
-
-const socialLinks = [
-  { href: "https://www.instagram.com/aurigaconstructions/?igsh=MWRvNTluc3hrMG53ZQ%3D%3D#", label: "Instagram", icon: "IG" },
-  { href: "https://facebook.com", label: "Facebook", icon: "FB" },
-  { href: "https://linkedin.com", label: "LinkedIn", icon: "IN" },
-];
-
-const footerLinks = [
-  { href: "/what-we-do", label: "What We Do" },
-  { href: "/designs", label: "Designs" },
-  { href: "/our-story", label: "Our Story" },
-  { href: "/contact", label: "Contact" },
-];
 
 export function Footer() {
   return (
-    <footer className="bg-forest text-cream h-60 flex items-center">
-      <div className="w-full px-12 md:px-20">
-        <div className="w-full">
-          {/* Main Footer Content */}
-          <div className="flex justify-between items-center w-full">
-            {/* Brand */}
-            <div className="flex items-center gap-4">
-              <Image
-                src="/white_green_trans.svg"
-                alt="Auriga Homes"
-                width={50}
-                height={50}
-                className="w-12 h-12"
-              />
-              <p className="text-cream/80 text-xs leading-relaxed">
-                Crafting exceptional spaces
-              </p>
-            </div>
+    <footer
+      style={{
+        background: "#0D0C0B",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+        paddingTop: "64px",
+        paddingBottom: "40px",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "0 48px",
+        }}
+      >
+        {/* Top Grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr 1fr 1fr",
+            gap: "64px",
+            paddingBottom: "56px",
+            borderBottom: "1px solid rgba(255,255,255,0.06)",
+          }}
+          className="footer-top-grid"
+        >
+          <style>{`
+            @media (max-width: 1024px) {
+              .footer-top-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 40px !important;
+              }
+            }
+            @media (max-width: 640px) {
+              .footer-top-grid {
+                grid-template-columns: 1fr !important;
+              }
+            }
+          `}</style>
 
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-xs uppercase tracking-widest mb-3 text-gold">Navigate</h4>
-              <ul className="space-y-1">
-                {footerLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-cream/80 hover:text-gold transition-colors text-xs"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          {/* Col 1: Brand */}
+          <div>
+            <div
+              style={{
+                fontFamily: "var(--font-display), 'Cormorant Garamond', Georgia, serif",
+                fontSize: "28px",
+                fontWeight: 300,
+                color: "#FFFFFF",
+                marginBottom: "16px",
+              }}
+            >
+              Auriga{" "}
+              <span style={{ color: "#B8965A", fontStyle: "italic" }}>Homes</span>
             </div>
+            <p
+              style={{
+                fontSize: "13px",
+                fontWeight: 300,
+                lineHeight: 1.7,
+                color: "rgba(255,255,255,0.4)",
+                maxWidth: "240px",
+              }}
+            >
+              Building dreams with precision and grace.
+            </p>
+          </div>
 
-            {/* Contact & Social */}
-            <div>
-              <h4 className="text-xs uppercase tracking-widest mb-3 text-gold">Connect</h4>
-              <div className="space-y-1 mb-3">
-                <p className="text-cream/80 text-xs">hello@aurigahomes.in</p>
-                <p className="text-cream/80 text-xs">+91 89044 28450</p>
-              </div>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => (
+          {/* Col 2: Navigate */}
+          <div>
+            <div
+              style={{
+                fontSize: "10px",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "#B8965A",
+                marginBottom: "20px",
+                fontFamily: "var(--font-sans), sans-serif",
+                fontWeight: 500,
+              }}
+            >
+              Navigate
+            </div>
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px" }}>
+              {[
+                { href: "/", label: "Home" },
+                { href: "/our-story", label: "Our Story" },
+                { href: "/what-we-do", label: "What We Do" },
+                { href: "/designs", label: "Designs" },
+                { href: "/blog", label: "Blog" },
+                { href: "/contact", label: "Contact" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: 300,
+                      color: "rgba(255,255,255,0.45)",
+                      textDecoration: "none",
+                      transition: "color 0.25s",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#FFFFFF";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)";
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3: Connect */}
+          <div>
+            <div
+              style={{
+                fontSize: "10px",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "#B8965A",
+                marginBottom: "20px",
+                fontFamily: "var(--font-sans), sans-serif",
+                fontWeight: 500,
+              }}
+            >
+              Connect
+            </div>
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px" }}>
+              {[
+                { href: "https://www.instagram.com/aurigaconstructions/", label: "Instagram" },
+                { href: "https://facebook.com", label: "Facebook" },
+                { href: "https://linkedin.com", label: "LinkedIn" },
+              ].map((link) => (
+                <li key={link.label}>
                   <a
-                    key={social.label}
-                    href={social.href}
+                    href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 border border-gold/30 flex items-center justify-center hover:bg-gold hover:border-gold transition-all text-xs font-sans"
-                    aria-label={social.label}
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: 300,
+                      color: "rgba(255,255,255,0.45)",
+                      textDecoration: "none",
+                      transition: "color 0.25s",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#FFFFFF";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)";
+                    }}
                   >
-                    {social.icon}
+                    {link.label}
                   </a>
-                ))}
-              </div>
-            </div>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Copyright */}
-            <div className="text-right">
-              <p className="text-cream/60 text-xs mb-2">
-                &copy; {new Date().getFullYear()} Auriga Homes
-              </p>
-              <div className="flex flex-col gap-1">
-                <Link href="/privacy" className="text-cream/60 hover:text-gold transition-colors text-xs">
-                  Privacy Policy
-                </Link>
-                <Link href="/terms" className="text-cream/60 hover:text-gold transition-colors text-xs">
-                  Terms of Service
-                </Link>
-              </div>
+          {/* Col 4: Contact */}
+          <div>
+            <div
+              style={{
+                fontSize: "10px",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "#B8965A",
+                marginBottom: "20px",
+                fontFamily: "var(--font-sans), sans-serif",
+                fontWeight: 500,
+              }}
+            >
+              Contact
             </div>
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px" }}>
+              <li>
+                <a
+                  href="mailto:hello@aurigahomes.in"
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: 300,
+                    color: "rgba(255,255,255,0.45)",
+                    textDecoration: "none",
+                    transition: "color 0.25s",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "#FFFFFF";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)";
+                  }}
+                >
+                  hello@aurigahomes.in
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+918904428450"
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: 300,
+                    color: "rgba(255,255,255,0.45)",
+                    textDecoration: "none",
+                    transition: "color 0.25s",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "#FFFFFF";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)";
+                  }}
+                >
+                  +91 89044 28450
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingTop: "32px",
+            flexWrap: "wrap",
+            gap: "16px",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "11px",
+              color: "rgba(255,255,255,0.3)",
+              letterSpacing: "0.04em",
+            }}
+          >
+            &copy; 2025 Auriga Homes. All rights reserved.
+          </span>
+          <div style={{ display: "flex", gap: "20px" }}>
+            {[
+              { href: "/privacy", label: "Privacy Policy" },
+              { href: "/terms", label: "Terms of Service" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                style={{
+                  fontSize: "11px",
+                  color: "rgba(255,255,255,0.3)",
+                  textDecoration: "none",
+                  transition: "color 0.25s",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.color = "#B8965A";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.3)";
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

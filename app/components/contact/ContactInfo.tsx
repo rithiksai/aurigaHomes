@@ -1,80 +1,51 @@
 export function ContactInfo() {
   return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="text-sm uppercase tracking-widest text-gold mb-4">
-          Office
-        </h3>
-        <p className="text-charcoal/80 leading-relaxed">
-          123 Design Boulevard
-          <br />
-          Los Angeles, CA 90012
-          <br />
-          United States
-        </p>
-      </div>
+    <div className="flex flex-col space-y-12">
+      {/* Quote */}
+      <p className="font-display italic text-white/80 text-[28px] leading-snug font-light">
+        &ldquo;Every great home<br />starts with a<br />conversation.&rdquo;
+      </p>
 
-      <div>
-        <h3 className="text-sm uppercase tracking-widest text-gold mb-4">
-          Get in Touch
-        </h3>
-        <p className="text-charcoal/80 leading-relaxed">
-          <a
-            href="mailto:hello@aurigahomes.com"
-            className="hover:text-gold transition-colors"
-          >
-            hello@aurigahomes.com
-          </a>
-          <br />
-          <a
-            href="tel:+15551234567"
-            className="hover:text-gold transition-colors"
-          >
-            +1 (555) 123-4567
-          </a>
-        </p>
-      </div>
+      <div className="space-y-10">
+        <div>
+          <div style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#B8965A', marginBottom: '12px' }}>
+            Get in Touch
+          </div>
+          <p className="text-white/70 text-sm leading-loose">
+            <a href="mailto:hello@aurigahomes.in" className="hover:text-white transition-colors block">
+              hello@aurigahomes.in
+            </a>
+            <a href="tel:+918904428450" className="hover:text-white transition-colors block mt-1">
+              +91 89044 28450
+            </a>
+          </p>
+        </div>
 
-      <div>
-        <h3 className="text-sm uppercase tracking-widest text-gold mb-4">
-          Office Hours
-        </h3>
-        <p className="text-charcoal/80 leading-relaxed">
-          Monday – Friday
-          <br />
-          9:00 AM – 6:00 PM PST
-        </p>
-      </div>
+        <div>
+          <div style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#B8965A', marginBottom: '12px' }}>
+            Office Hours
+          </div>
+          <p className="text-white/70 text-sm leading-loose">
+            Monday — Saturday<br />
+            9:00 AM – 7:00 PM IST
+          </p>
+        </div>
 
-      <div>
-        <h3 className="text-sm uppercase tracking-widest text-gold mb-4">
-          Follow Us
-        </h3>
-        <div className="flex gap-4">
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-charcoal/80 hover:text-gold transition-colors"
-          >
-            Instagram
-          </a>
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-charcoal/80 hover:text-gold transition-colors"
-          >
-            Facebook
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-charcoal/80 hover:text-gold transition-colors"
-          >
-            LinkedIn
-          </a>
+        <div>
+          <div style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#B8965A', marginBottom: '12px' }}>
+            Follow Us
+          </div>
+          <div className="flex flex-col gap-2">
+            <a href="https://www.instagram.com/aurigaconstructions/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors text-sm">
+              Instagram
+            </a>
+            <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">
+              Facebook
+            </a>
+            <a href="#" className="text-white/60 hover:text-white transition-colors text-sm">
+              LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </div>

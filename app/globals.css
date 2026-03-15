@@ -2,16 +2,15 @@
 
 /* Custom Properties - Design System */
 :root {
-  /* Colors - Dark Green, Gold, White Palette */
-  --color-forest: #1a3a2e;
-  --color-sage: #3d5a4b;
-  --color-moss: #5a7765;
-  --color-gold: #d4af37;
-  --color-gold-dark: #b8941f;
-  --color-gold-light: #f0d98e;
-  --color-white: #ffffff;
-  --color-cream: #fafaf7;
-  --color-charcoal: #2a2a2a;
+  /* Colors - Cream / Ink / Gold Palette */
+  --color-cream: #F7F4EF;
+  --color-ink: #161412;
+  --color-ink-soft: #4A443C;
+  --color-gold: #B8965A;
+  --color-gold-lt: #D4B483;
+  --color-dark: #0D0C0B;
+  --color-gold-rule: rgba(184,150,90,0.25);
+  --color-white: #FFFFFF;
 
   /* Typography - Will be configured with Google Fonts */
   --font-display: var(--font-cormorant);
@@ -25,7 +24,7 @@
   --spacing-xl: 10rem;
 
   /* Layout */
-  --container-max: 1440px;
+  --container-max: 1280px;
   --container-narrow: 960px;
   --container-wide: 1920px;
 
@@ -37,15 +36,14 @@
 
 @theme inline {
   /* Color System */
-  --color-forest: var(--color-forest);
-  --color-sage: var(--color-sage);
-  --color-moss: var(--color-moss);
-  --color-gold: var(--color-gold);
-  --color-gold-dark: var(--color-gold-dark);
-  --color-gold-light: var(--color-gold-light);
-  --color-white: var(--color-white);
   --color-cream: var(--color-cream);
-  --color-charcoal: var(--color-charcoal);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-gold: var(--color-gold);
+  --color-gold-lt: var(--color-gold-lt);
+  --color-dark: var(--color-dark);
+  --color-gold-rule: var(--color-gold-rule);
+  --color-white: var(--color-white);
 
   /* Font Families */
   --font-family-display: var(--font-display);
@@ -96,8 +94,8 @@ html {
 
 body {
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  background: var(--color-white);
-  color: var(--color-charcoal);
+  background: var(--color-cream);
+  color: var(--color-ink);
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -142,12 +140,12 @@ a:hover {
 /* Selection color */
 ::selection {
   background: var(--color-gold);
-  color: var(--color-forest);
+  color: var(--color-ink);
 }
 
 ::-moz-selection {
   background: var(--color-gold);
-  color: var(--color-forest);
+  color: var(--color-ink);
 }
 
 /* Focus styles for accessibility */

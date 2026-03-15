@@ -4,7 +4,7 @@ import Link from "next/link";
 interface ButtonProps {
   children: React.ReactNode;
   href?: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "ghost" | "outline-gold";
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
@@ -23,9 +23,10 @@ export function Button({
   const baseStyles =
     "inline-block px-8 py-4 text-sm uppercase tracking-widest transition-colors duration-300 font-sans disabled:opacity-50 disabled:cursor-not-allowed";
   const variantStyles = {
-    primary: "bg-gold text-forest hover:bg-gold-dark disabled:hover:bg-gold",
-    secondary:
-      "border border-gold text-gold hover:bg-gold hover:text-forest disabled:hover:bg-transparent",
+    primary: "bg-[#161412] text-white hover:bg-[#B8965A] disabled:hover:bg-[#161412]",
+    secondary: "border border-[#161412] text-[#161412] hover:bg-[#161412] hover:text-white disabled:hover:bg-transparent",
+    ghost: "border border-white text-white hover:bg-white hover:text-[#161412] disabled:hover:bg-transparent",
+    "outline-gold": "border border-[#B8965A] text-[#B8965A] hover:bg-[#B8965A] hover:text-white disabled:hover:bg-transparent",
   };
 
   const combinedClassName = cn(baseStyles, variantStyles[variant], className);

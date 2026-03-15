@@ -1,4 +1,3 @@
-import { Card } from "../ui/Card";
 import type { Service } from "@/lib/data/services";
 
 interface ServiceCardProps {
@@ -7,14 +6,22 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <Card className="p-8 md:p-10 group hover:scale-[1.02] transition-transform duration-300">
-      <div className="text-6xl md:text-7xl font-display text-gold/20 mb-6 group-hover:text-gold/40 transition-colors">
+    <div className="border-b border-[rgba(184,150,90,0.25)] py-10 grid grid-cols-[80px_1fr_auto] items-start gap-8 group cursor-default hover:bg-white transition-colors duration-300 px-4">
+      {/* Number */}
+      <div className="font-display text-5xl font-light text-[rgba(184,150,90,0.3)] group-hover:text-[rgba(184,150,90,0.6)] transition-colors">
         {service.number}
       </div>
-      <h3 className="text-2xl md:text-3xl font-display tracking-wide mb-4 group-hover:text-gold transition-colors">
-        {service.title}
-      </h3>
-      <p className="text-charcoal/70 leading-relaxed">{service.description}</p>
-    </Card>
+      {/* Content */}
+      <div>
+        <h3 className="font-display text-2xl font-normal text-[#161412] group-hover:text-[#B8965A] transition-colors mb-2">
+          {service.title}
+        </h3>
+        <p className="text-sm font-light text-[#4A443C] leading-relaxed">{service.description}</p>
+      </div>
+      {/* Arrow */}
+      <span className="text-xl text-[#B8965A] opacity-0 group-hover:opacity-100 transition-opacity self-center">
+        &#8594;
+      </span>
+    </div>
   );
 }
