@@ -23,7 +23,7 @@ export default function DesignsPage() {
       {/* ── HERO ── */}
       <section style={{ position: "relative", height: "100vh", minHeight: "600px" }}>
         <Image
-          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2000&q=90&auto=format&fit=crop"
+          src="/designs-hero.png"
           alt="Auriga Homes — Our Work"
           fill
           className="object-cover object-center"

@@ -9,17 +9,15 @@ export const metadata: Metadata = {
 const founders = [
   {
     name: "Manoj Cherukuri",
-    role: "Founder & Lead Builder",
+    role: "Founder",
     quote: "Architecture is the art of making the inevitable feel effortless.",
     bio: "With over 5 years of hands-on construction experience, Manoj founded Auriga Homes on a single conviction: that the homes people live in should be as carefully considered as the lives they live inside them. His minimalist philosophy runs through every project — not as a style, but as a discipline.",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1000&q=90&auto=format&fit=crop",
   },
   {
     name: "Raunak Baid",
-    role: "Co-Founder & Interior Designer",
+    role: "Co-Founder",
     quote: "Every space should feel like it was made for exactly one person — its owner.",
-    bio: "Raunak's eye for detail and deep passion for sustainable design have shaped Auriga's interior language from the very beginning. He believes every room should tell a story — and his job is to make sure it's the right one. His interiors feel personal, never generic.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=1000&q=90&auto=format&fit=crop",
+    bio: "Raunak's eye for detail and deep passion for considered design have shaped Auriga's interior language from the very beginning. He believes every room should tell a story — and his job is to make sure it's the right one. His interiors feel personal, never generic.",
   },
 ];
 
@@ -162,58 +160,89 @@ export default function OurStoryPage() {
           </h2>
         </div>
 
-        {founders.map((founder, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <div key={founder.name} style={{ borderTop: "1px solid rgba(184,150,90,0.2)", marginTop: index === 0 ? "48px" : "0" }}>
-              <div
-                className="flex flex-col md:flex-row"
-                style={{ minHeight: "560px" }}
-              >
-                {/* Image */}
-                <div
-                  className={`relative w-full md:w-1/2 ${isEven ? "md:order-1" : "md:order-2"}`}
-                  style={{ minHeight: "400px" }}
-                >
-                  <Image
-                    src={founder.image}
-                    alt={founder.name}
-                    fill
-                    className="object-cover object-top"
-                    unoptimized
-                    style={{ filter: "grayscale(20%)" }}
-                  />
-                </div>
-
-                {/* Text */}
-                <div
-                  className={`w-full md:w-1/2 flex flex-col justify-center ${isEven ? "md:order-2" : "md:order-1"}`}
-                  style={{ padding: "72px clamp(40px, 6vw, 96px)", background: isEven ? "#F7F4EF" : "#FFFFFF" }}
-                >
-                  <div style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8965A", marginBottom: "16px" }}>
-                    {founder.role}
-                  </div>
-                  <h3
-                    className="font-display font-light"
-                    style={{ fontSize: "clamp(32px, 3vw, 48px)", lineHeight: 1.1, color: "#161412", marginBottom: "20px" }}
-                  >
-                    {founder.name}
-                  </h3>
-                  <div style={{ width: "40px", height: "1px", background: "#B8965A", marginBottom: "24px" }} />
-                  <p
-                    className="font-display font-light italic"
-                    style={{ fontSize: "20px", color: "#4A443C", lineHeight: 1.5, marginBottom: "24px" }}
-                  >
-                    &ldquo;{founder.quote}&rdquo;
-                  </p>
-                  <p style={{ fontSize: "14px", fontWeight: 300, lineHeight: 1.9, color: "#4A443C", maxWidth: "440px" }}>
-                    {founder.bio}
-                  </p>
-                </div>
-              </div>
+        {/* Single shared photo + two bios side by side */}
+        <div
+          style={{
+            borderTop: "1px solid rgba(184,150,90,0.2)",
+            marginTop: "48px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            minHeight: "600px",
+          }}
+        >
+          {/* Left — shared photo */}
+          <div style={{ position: "relative", overflow: "hidden", minHeight: "500px" }}>
+            <Image
+              src="/founders.jpg"
+              alt="Manoj Cherukuri and Raunak Baid — Founders of Auriga Homes"
+              fill
+              className="object-cover object-top"
+              sizes="50vw"
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: "40%",
+                background: "linear-gradient(to top, rgba(13,12,11,0.5), transparent)",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: "28px",
+                left: "32px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
+              <div style={{ width: "20px", height: "1px", background: "#B8965A" }} />
+              <span style={{ fontSize: "9px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>
+                The Founders
+              </span>
             </div>
-          );
-        })}
+          </div>
+
+          {/* Right — two bios stacked */}
+          <div style={{ display: "flex", flexDirection: "column", borderLeft: "1px solid rgba(184,150,90,0.2)" }}>
+            {founders.map((founder, i) => (
+              <div
+                key={founder.name}
+                style={{
+                  flex: 1,
+                  padding: "56px clamp(40px, 5vw, 72px)",
+                  borderBottom: i === 0 ? "1px solid rgba(184,150,90,0.2)" : "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                }}
+              >
+                <div style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8965A", marginBottom: "14px" }}>
+                  {founder.role}
+                </div>
+                <h3
+                  className="font-display font-light"
+                  style={{ fontSize: "clamp(28px, 2.5vw, 40px)", lineHeight: 1.1, color: "#161412", marginBottom: "18px" }}
+                >
+                  {founder.name}
+                </h3>
+                <div style={{ width: "32px", height: "1px", background: "#B8965A", marginBottom: "18px" }} />
+                <p
+                  className="font-display font-light italic"
+                  style={{ fontSize: "17px", color: "#4A443C", lineHeight: 1.6, marginBottom: "18px" }}
+                >
+                  &ldquo;{founder.quote}&rdquo;
+                </p>
+                <p style={{ fontSize: "14px", fontWeight: 300, lineHeight: 1.9, color: "#4A443C", maxWidth: "420px" }}>
+                  {founder.bio}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── VALUES ── */}

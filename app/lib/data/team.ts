@@ -10,18 +10,16 @@ export const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Manoj Cherukuri",
-    role: "Founder & Lead Builder",
-    bio: "With over 5 years of experience, Manoj brings a minimalist philosophy to every project.",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+    role: "Founder",
+    bio: "With over 5 years of experience, Manoj brings a minimalist philosophy to every project. He oversees every build personally — because he believes a home is only as good as the hands that construct it.",
+    image: "/founders.jpg",
   },
   {
     id: 2,
     name: "Raunak Baid",
-    role: "Co-Founder & Interior Designer",
-    bio: "Raunak's keen eye for detail and passion for sustainable design have shaped countless interiors. He believes every space should tell a story.",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+    role: "Co-Founder",
+    bio: "Raunak's keen eye for detail and passion for considered design have shaped every Auriga project from the inside out. He believes every space should feel like it was made for exactly one family.",
+    image: "/founders.jpg",
   },
 ];
 

@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -64,7 +65,7 @@ export default function WhatWeDoPage() {
       {/* ── HERO — Full-bleed image with overlay text ── */}
       <section className="relative w-full" style={{ height: "100vh", minHeight: "600px" }}>
         <Image
-          src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?w=2000&q=90&auto=format&fit=crop"
+          src="/what-we-do-hero.png"
           alt="Auriga Homes — What We Do"
           fill
           className="object-cover object-center"
@@ -99,6 +100,78 @@ export default function WhatWeDoPage() {
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
           <span style={{ fontSize: "9px", letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Scroll</span>
           <div style={{ width: "1px", height: "48px", background: "linear-gradient(to bottom, rgba(184,150,90,0.8), transparent)" }} />
+        </div>
+      </section>
+
+      {/* ── VALUE PROPOSITION STRIP ── */}
+      <section
+        style={{
+          background: "#161412",
+          padding: "80px clamp(32px, 6vw, 96px)",
+          borderBottom: "1px solid rgba(184,150,90,0.15)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1440px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr 1px 1fr 1px 1fr",
+            gap: "0",
+            alignItems: "center",
+          }}
+        >
+          {[
+            { step: "01", text: "Explore multiple design options." },
+            { step: "02", text: "Choose what fits your vision." },
+            { step: "03", text: "Auriga handles the construction." },
+          ].map((item, i) => (
+            <React.Fragment key={item.step}>
+              <div
+                style={{
+                  padding: "0 48px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "16px",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-display), 'Cormorant Garamond', Georgia, serif",
+                    fontSize: "11px",
+                    letterSpacing: "0.2em",
+                    color: "rgba(184,150,90,0.4)",
+                  }}
+                >
+                  {item.step}
+                </span>
+                <div style={{ width: "32px", height: "1px", background: "#B8965A" }} />
+                <p
+                  style={{
+                    fontFamily: "var(--font-display), 'Cormorant Garamond', Georgia, serif",
+                    fontSize: "clamp(22px, 2.5vw, 32px)",
+                    fontWeight: 300,
+                    lineHeight: 1.3,
+                    color: "white",
+                    fontStyle: i === 2 ? "italic" : "normal",
+                  }}
+                >
+                  {i === 2 ? (
+                    <>
+                      <em style={{ color: "#B8965A" }}>Auriga</em> handles the construction.
+                    </>
+                  ) : (
+                    item.text
+                  )}
+                </p>
+              </div>
+              {i < 2 && (
+                <div
+                  style={{ width: "1px", height: "80px", background: "rgba(184,150,90,0.2)", margin: "0 auto" }}
+                />
+              )}
+            </React.Fragment>
+          ))}
         </div>
       </section>
 
@@ -173,6 +246,81 @@ export default function WhatWeDoPage() {
             </div>
           );
         })}
+      </section>
+
+      {/* ── THE AURIGA DIFFERENCE ── */}
+      <section style={{ background: "#F7F4EF", padding: "100px clamp(32px, 6vw, 96px)", borderTop: "1px solid rgba(184,150,90,0.2)" }}>
+        <div style={{ maxWidth: "1440px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+
+          {/* Left — Heading */}
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
+              <div style={{ width: "32px", height: "1px", background: "#B8965A" }} />
+              <span style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8965A", fontWeight: 500 }}>
+                Why Auriga
+              </span>
+            </div>
+            <h2
+              style={{
+                fontFamily: "var(--font-display), 'Cormorant Garamond', Georgia, serif",
+                fontSize: "clamp(40px, 5vw, 72px)",
+                fontWeight: 300,
+                lineHeight: 1.05,
+                color: "#161412",
+                marginBottom: "28px",
+              }}
+            >
+              The Auriga
+              <br />
+              <em style={{ fontStyle: "italic", color: "#B8965A" }}>Difference</em>
+            </h2>
+            <p style={{ fontSize: "15px", fontWeight: 300, lineHeight: 1.9, color: "#4A443C", maxWidth: "420px" }}>
+              We have built our process around one thing — making the experience of building your home as clear, smooth, and trustworthy as the end result.
+            </p>
+          </div>
+
+          {/* Right — Points */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+            {[
+              { label: "Transparent BOQ-based pricing", desc: "No surprises. Every cost itemised before work begins." },
+              { label: "Structured project management", desc: "Clear milestones, accountability at every stage." },
+              { label: "Clear communication and updates", desc: "You always know where your project stands." },
+              { label: "Architect + construction coordination", desc: "Design intent preserved all the way through the build." },
+              { label: "Single point of responsibility", desc: "One team. One contact. One standard." },
+            ].map((point, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "24px 1fr",
+                  gap: "24px",
+                  alignItems: "flex-start",
+                  padding: "28px 0",
+                  borderBottom: i < 4 ? "1px solid rgba(184,150,90,0.15)" : "none",
+                }}
+              >
+                <div
+                  style={{
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    background: "#B8965A",
+                    marginTop: "8px",
+                    flexShrink: 0,
+                  }}
+                />
+                <div>
+                  <p style={{ fontSize: "15px", fontWeight: 500, color: "#161412", marginBottom: "6px", letterSpacing: "0.01em" }}>
+                    {point.label}
+                  </p>
+                  <p style={{ fontSize: "13px", fontWeight: 300, color: "#4A443C", lineHeight: 1.7 }}>
+                    {point.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── QUOTE BREAK ── */}

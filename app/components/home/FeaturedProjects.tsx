@@ -3,29 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { projects as allProjects } from "@/lib/data/projects";
+
+const featured = allProjects.filter((p) => p.featured).slice(0, 3);
 
 const projects = [
-  {
-    id: 1,
-    title: "The Modern Villa",
-    location: "Los Angeles, CA",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=85",
-    main: true,
-  },
-  {
-    id: 2,
-    title: "Urban Loft",
-    location: "New York, NY",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=85",
-    main: false,
-  },
-  {
-    id: 3,
-    title: "Coastal Retreat",
-    location: "Malibu, CA",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=85",
-    main: false,
-  },
+  { id: featured[0]?.slug, title: featured[0]?.title, location: featured[0]?.location, image: featured[0]?.heroImage, main: true },
+  { id: featured[1]?.slug, title: featured[1]?.title, location: featured[1]?.location, image: featured[1]?.heroImage, main: false },
+  { id: featured[2]?.slug, title: featured[2]?.title, location: featured[2]?.location, image: featured[2]?.heroImage, main: false },
 ];
 
 function ProjectCard({
@@ -104,7 +89,7 @@ function ProjectCard({
 
       {/* View Project Pill */}
       <Link
-        href={`/designs/${project.id}`}
+        href={`/designs/${project.id}`} 
         style={{
           position: "absolute",
           top: "24px",

@@ -221,7 +221,7 @@ export function Hero() {
         }}
       >
         <Image
-          src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=85&auto=format&fit=crop"
+          src="/hero-home.png"
           alt="Luxury home by Auriga Homes"
           fill
           style={{ objectFit: "cover", objectPosition: "center" }}

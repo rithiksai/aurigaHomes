@@ -2,101 +2,64 @@ import type { Project } from "../types/project";
 
 export const projects: Project[] = [
   {
-    slug: "modern-villa",
-    title: "Modern Villa",
+    slug: "completed-residence",
+    title: "Completed Residence",
     category: "architecture",
-    location: "Los Angeles, CA",
-    year: 2024,
+    location: "Bengaluru",
+    year: 2023,
     client: "Private Residence",
     description:
-      "A stunning modern villa that seamlessly blends indoor and outdoor living with clean lines and sophisticated materials.",
-    heroImage:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop",
+      "A completed multi-storey residence showcasing Auriga's precision in construction — copper-toned cladding, glass balcony railings, cantilevered volumes, and lush rooftop greenery. Built and delivered.",
+    heroImage: "/projects/project-1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop",
+      "/projects/project-1.jpg",
+      "/projects/project-2.jpg",
     ],
     featured: true,
   },
   {
-    slug: "urban-loft",
-    title: "Urban Loft",
-    category: "interior",
-    location: "New York, NY",
-    year: 2023,
-    client: "Private Client",
+    slug: "raghavendra-residence",
+    title: "Raghavendra Residence",
+    category: "architecture",
+    location: "Bengaluru",
+    year: 2024,
+    client: "Mr. Raghavendra",
     description:
-      "An industrial loft transformed into a sophisticated living space with curated furnishings and minimal aesthetic.",
-    heroImage:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop",
+      "A bold contemporary residence on a corner plot — clean cuboid massing in dark grey and white, with an open ground-floor carport, rooftop terrace, and floor-to-ceiling glass that commands the street.",
+    heroImage: "/projects/project-3.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&h=800&fit=crop",
+      "/projects/project-3.jpg",
     ],
     featured: true,
   },
   {
-    slug: "coastal-retreat",
-    title: "Coastal Retreat",
+    slug: "subramanya-residence",
+    title: "Subramanya Residence",
     category: "architecture",
-    location: "Malibu, CA",
+    location: "Bengaluru",
     year: 2024,
-    client: "Private Residence",
+    client: "Mr. Subramanya",
     description:
-      "A breathtaking coastal home designed to capture panoramic ocean views while maintaining privacy and comfort.",
-    heroImage:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop",
+      "A striking urban home defined by exposed dark brick cladding, dramatic dusk lighting, and generous open parking. Three storeys of considered design — each level distinct, each detail deliberate.",
+    heroImage: "/projects/project-4.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop",
+      "/projects/project-4.jpg",
     ],
     featured: true,
   },
   {
-    slug: "mountain-cabin",
-    title: "Mountain Cabin",
+    slug: "praveen-residence",
+    title: "Praveen Residence",
     category: "architecture",
-    location: "Aspen, CO",
-    year: 2023,
-    client: "Private Residence",
-    description:
-      "A contemporary mountain retreat that harmonizes with its natural surroundings through thoughtful material selection.",
-    heroImage:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop",
-    ],
-    featured: false,
-  },
-  {
-    slug: "downtown-penthouse",
-    title: "Downtown Penthouse",
-    category: "interior",
-    location: "Chicago, IL",
+    location: "Bengaluru",
     year: 2024,
-    client: "Private Client",
+    client: "Mr. Praveen",
     description:
-      "A luxurious penthouse interior featuring bold design choices and impeccable attention to detail.",
-    heroImage:
-      "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&h=800&fit=crop",
+      "A compact urban home with a confident presence — stacked dark and cream volumes, a covered carport, open terraces at every level, and vertical louvers that balance openness with privacy.",
+    heroImage: "/projects/project-6.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&h=800&fit=crop",
-    ],
-    featured: false,
-  },
-  {
-    slug: "garden-oasis",
-    title: "Garden Oasis",
-    category: "landscape",
-    location: "Santa Barbara, CA",
-    year: 2023,
-    client: "Private Estate",
-    description:
-      "A meticulously designed landscape that creates serene outdoor spaces for contemplation and entertainment.",
-    heroImage:
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop",
+      "/projects/project-6.jpg",
+      "/projects/project-5.jpg",
     ],
     featured: false,
   },
